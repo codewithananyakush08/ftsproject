@@ -1,0 +1,48 @@
+{% extends 'empbase.html' %}
+{% load static %}
+{% block employee %}
+<div class="row">
+    <div class="col-sm-10 mx-auto">
+        <div class="card p-4 shadow">
+            <h2  class="text-center" style="color:rgb(11, 51, 11); font-family:'Algerian', serif; ">Edit  Profile</h2><br>
+            <form method="post" enctype="multipart/form-data" class="row g-4">
+                {% csrf_token %}
+                <div class="col-sm-6">
+                    <label for="eid" class="form-label">Employee ID</label>
+                    <input type="text" name="empid" value="{{emp.empid}}" id="eid" class="form-control" disabled>
+                </div>
+                <div class="col-sm-6">
+                    <label for="ename" class="form-label">Employee Name</label>
+                    <input type="text" name="name" value="{{emp.name}}" id="ename" class="form-control">
+                </div>
+                <div class="col-sm-6">
+                    <label for="cn" class="form-label">Contactno</label>
+                    <input type="text" name="contactno" value="{{emp.contactno}}" id="cn" class="form-control">
+                </div>
+                <div class="col-sm-6">
+                    <label for="em" class="form-label">Email</label>
+                    <input type="email" name="email" value="{{emp.email}}" id="em" class="form-control" disabled>
+                </div>
+                <div class="col-sm-12">
+                    <label for="pic" class="form-label">Profile Picture(Leave blank for same picture)</label>
+                    <input type="file" name="picture" class="form-control" id="pic">
+                </div>
+                <div class="col-sm-12">
+                    <label for="add" class="form-label">Address</label>
+                    <textarea name="address" id="add" class="form-control">{{emp.address}}</textarea>
+                </div>
+                <div class="col-sm-6">
+                    <a href="{% url 'updateprofile' %}">
+                    <button type="button" class="btn btn-outline-danger">Cancel</button></a>
+                    <button type="submit" class="btn" style="background-color: rgb(3, 39, 3); color:aliceblue;">Save</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+{% endblock %}

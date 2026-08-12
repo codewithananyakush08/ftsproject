@@ -1,0 +1,44 @@
+{% extends 'empbase.html' %}
+{% load static %}
+{% block employee %}
+<div class="row">
+    <div class="col-sm-11 mx-auto">
+        <div class="card  shadow p-4">
+            <h2 style="color:rgb(2, 54, 6); font-family:'Algerian', serif;" class="text-center"> View files </h2>
+            <table class="table">
+                <tr>
+                    <th>File ID</th>
+                    <th>Title</th>
+                    <th>Subject</th>
+                    <th>Current Holder</th>
+                    <th>Status</th>
+                    <th>File Attachment</th>
+                    <th>Action</th>
+                </tr>
+                {% for f in files %}
+                <tr>
+                    <td>{{f.file_no}}</td>
+                    <td>{{f.title}}</td>
+                    <td>{{f.subject}}</td>
+                    <td>{{f.current_holder.name}}</td>
+                    <td>{{f.status}}</td>
+                    <td>
+                        {% if f.file_attachment %}
+                        <a href="{{f.file_attachment.url}}" target="_blank">Viewfiles</a>
+                        {% else %}
+                        No File Attachment
+                        {% endif %}
+                    </td>
+                    <td>
+                        <a href="{% url 'filedetails' fid=f.file_no %}"  class="btn  btn-sm" style="background-color: rgb(2, 54, 6); color:antiquewhite"> <i class="ti ti-eye"></i>&nbsp;View</a> 
+                    
+                    </td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

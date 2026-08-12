@@ -1,0 +1,49 @@
+{% extends 'adminbase.html' %}
+{% load static %}
+{% block admin %}
+
+<div class="row">
+    <div class="col-sm-10 mx-auto">
+        <div class="card p-4 shadow">
+            <h2 class="text-center" style="color:rgb(5, 34, 7); font-family:'Algerian';">Add Employee</h2>
+            <form method="post" class="row g-4">
+                {% csrf_token %}
+                <div class="col-sm-6">
+                    <label for="eid" class="form-label">Employee ID</label>
+                    <input type="text" name="empid" id="eid" class="form-control">
+                </div>
+                <div class="col-sm-6">
+                    <label for="ename" class="form-label">Employee Name</label>
+                    <input type="text" name="name" id="ename" class="form-control">
+                </div>
+
+                <div class="col-sm-6">
+                    <label for="cn" class="form-label">Contactno</label>
+                    <input type="text" name="contactno" id="cn" class="form-control">
+                </div>
+                <div class="col-sm-6">
+                    <label for="em" class="form-label">Email</label>
+                    <input type="email" name="email" id="em" class="form-control">
+                </div>
+
+                <div class="col-sm-6">
+                    <label for="desig" class="form-label">Designation</label>
+                    <input type="text" name="designation" id="desig" class="form-control">
+                </div>
+                <div class="col-sm-6">
+                    <label for="dept" class="form-label">Department</label>
+                    <select name="dept_id" id="dept" class="form-select">
+                        <option value="" selected disabled>Select Department</option>
+                        {% for d in depts %}
+                        <option value="{{d.id}}">{{d.dept_name}}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="col-sm-12">
+                    <button type="submit" class="btn text-light" style=" background-color: rgb(8, 59, 3);">Add Employee</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

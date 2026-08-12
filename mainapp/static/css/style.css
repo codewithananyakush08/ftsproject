@@ -1,0 +1,95 @@
+body {
+    background-image:linear-gradient(rgb(40, 104, 61,0.8), rgba(85, 109, 89, 0.8)), url('../img/tree1.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    font-family: "Poppins", sans-serif;
+}
+b{
+  font-size: 11px;   
+}
+.written{
+ font-size: 23px;
+}
+p {
+    font-size: 13px;
+}
+.icon-style {
+    font-size: 12px;
+    background: rgba(255, 255, 255, 0.2);
+    padding: 12px;
+    border-radius: 50%;
+    color: white;
+    text-align: center;
+}
+.people {
+    font-size: 14px;
+    background: #e8efff;
+    padding: 12px;
+    border-radius:5px;
+    text-align: center;
+    box-shadow: 7px 7px 25px rgba(255, 255, 255, 0.2);
+}
+.card-text {
+    font-size: 13px;
+}
+.card{
+ background-color:#f8fbf9;
+ width:20rem;   
+}
+.no-underline{
+text-decoration: none;
+}
+.green{
+border-radius:25px;
+background-color:#e7f4ec;
+font-size:12px;
+}
+.right{
+font-size:11px;
+}
+.for{
+font-size:12px;
+color:rgb(12, 37, 12);
+}
+.left{
+font-size:14px;
+font-family:'Poppins' sans-serif;
+font-weight: 500px;
+}
+.rightpart{
+color:white;
+background-image: url('../img/tree1.jpg');
+background-size: cover;
+background-repeat: no-repeat;
+}
+.form-box{
+width: 300px;
+  padding: 30px;
+  border-radius:  0px 15px 15px 0px;
+  /* 🔥 Glass Effect */
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(233, 223, 223, 0.3);
+  color: white;
+}
+.top{
+font-size:12px;
+}
+.card:hover{
+border:1px solid rgb(5, 20, 5);
+box-shadow: 7px 7px 25px  #08350a;
+}
+/* form input box */
+.form-control:focus {
+    border: 2px solid rgb(11, 27, 11);
+    box-shadow: none;
+    outline: none;
+}
+.alert .btn-close:focus {
+    box-shadow: none;
+    outline: none;
+}
+.copyright{
+    font-size: 10px;
+color:lightgrey;
+}

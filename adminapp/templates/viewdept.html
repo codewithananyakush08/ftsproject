@@ -1,0 +1,26 @@
+{% extends 'adminbase.html' %}
+{% load static %}
+{% block admin %}
+<div class="row">
+    <div class="col-sm-8 mx-auto">
+        <div class="card shadow py-3 px-4">
+            <h2 class=" text-center" style="color: rgb(4, 44, 4); font-family:'Algerian', serif;
+">Views Department</h2>
+            <table class="table table-striped">
+                <tr style="background-color: rgb(4, 44, 4);">
+                    <th class="text-white">S.No</th>
+                    <th class="text-white">Department</th>
+                    <th class="text-white">Action</th>
+                </tr>
+                {% for d in depts %}
+                <tr>
+                    <td>{{forloop.counter}}</td>
+                    <td>{{d.dept_name}}</td>
+                    <td><a href="{% url 'deldept' did=d.id %}" class="btn btn-danger"><i class="ti ti-trash"></i></a></td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}

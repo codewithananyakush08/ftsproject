@@ -1,0 +1,111 @@
+{% extends 'empbase.html' %}
+{% load static %}
+{% block employee %}
+<h2 style="color: rgb(15, 77, 20);">File Details</h2>
+<div class="row">
+    <div class="col-sm-7">
+        <div class="card shadow p-4">
+            <h4 class="logo"><i class="fa-regular fa-file-lines"></i>File No-{{file.file_no}}</h4>
+            <table class="table">
+                <tr>
+                    <th style="color:rgb(15, 77, 20)"><i class="fa-regular fa-file-lines"></i> Title :</th>
+                    <td>{{file.title}}</td>
+                </tr>
+                <tr>
+                    <th style="color:rgb(15, 77, 20)"><i class="fa-regular fa-message"></i> Subject</th>
+                    <td>{{file.subject}}</td>
+                </tr>
+                <tr>
+                    <th style="color:rgb(15, 77, 20)"> <i class="fa-regular fa-user"></i> Initiate by</th>
+                    <td>{{file.initiated_by.name }}</td>
+                </tr>
+                <tr>
+                    <th style="color:rgb(15, 77, 20)"><i class="fa-regular fa-user"></i> Current holder</th>
+                    <td>{{file.current_holder.name}}</td>
+                </tr>
+                <tr>
+                    <th style="color:rgb(15, 77, 20)"><i class="fa-solid fa-circle"></i> Status</th>
+                    <td>{{file.status}}</td>
+                </tr>
+                <tr>
+                    <th style="color:rgb(15, 77, 20)"> <i class="fa-solid fa-calendar"></i> Initiated Date </th>
+                    <td>{{file.created_at}}</td>
+                </tr>
+                <tr>
+                    <th style="color:rgb(15, 77, 20)"><i class="fa-solid fa-paperclip"></i> File Attachment </th>
+                    <td>
+                        {% if file.file_attachment %}
+                        <a href="{{ file.file_attachment.url }}" target="_blank"> <i
+                                class="fa-solid fa-paperclip"></i>Viewfiles</a>
+                        {% else %}
+                        No File Attachment
+                        {% endif %}
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="card shadow p-4">
+            <h4 style="color:rgb(10, 104, 38)"><i class="fa-solid fa-clock-rotate-left"></i> Track History</h4>
+            {% for fm in file_movements %}
+            <div class="card p-3">
+
+                <p style="color:rgb(10, 104, 38)"><i class="ti ti-calendar"></i>{{fm.moved_at}}</p>
+                <p class="fw-bold">From: {{fm.from_employee.name}} ({{fm.from_employee.email}})
+                    <br><i class="ti ti-arrow-down"></i><br>
+                    To:{{fm.to_employee.name}}({{fm.to_employee.email}})
+                </p>
+                <p>Action:{{fm.action}}</p>
+                <p>Remarks:{{fm.remarks}}</p>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <div class="col-sm-5">
+        {% if file.status == "OPEN" %}
+        <div class="card p-4">
+            <h4 class="">Forward</h4>
+            <form method="post">
+                {% csrf_token %}
+                <div class="card p-2">
+                    <h6>From</h6>
+                    <p><i class="fa-regular fa-user" style="color:rgb(39, 92, 18)"></i> {{emp.name}} ({{emp.email}})</p>
+                </div>
+                <div class="card p-2">
+                    <h6>To</h6>
+                    <select name="emp_email" class="form-control">
+                        <option value="" selected disabled><i class="fa-regular fa-user"></i> Select Employee</option>
+                        {% for emp in employees %}
+                        <option value="{{emp.email}}">
+                            {{emp.name}} ({{emp.department.dept_name}}) -- {{emp.email}}
+                        </option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="card p-2">
+                    <h6>Action</h6>
+                    <select name="action" class="form-control">
+                        <option value="" selected disabled>Select action</option>
+                        <option value="FORWARD">Forward</option>
+                        <option value="RETURN">Return</option>
+                        <option value="CLOSE">Close</option>
+                    </select>
+                </div>
+                <div class="card p-2">
+                    <h6>Remarks</h6>
+                    <textarea name="remarks" class="form-control" placeholder="Enter your remarks"></textarea>
+                </div>
+                <button type="submit" class="btn w-100" style="background-color: rgb(10, 104, 38); color:aliceblue">
+                    Send</button>
+            </form>
+        </div>
+        {% else %}
+        <div class="card p-4  bg-danger-subtle">
+          <h4 class="fw-bold">This file is closed.</h4> 
+        </div>
+        {% endif %}
+    </div>
+</div>
+
+
+{% endblock %}

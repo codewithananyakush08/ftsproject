@@ -1,0 +1,100 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FTS</title>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+    <div class="container-fluid" style="height:100vh;">
+        <div class="row h-100 align-items-center">
+            <div class="col-sm-8 mx-auto border-top border-success border-3 rounded-4">
+                <div class="row">
+                    <div class="col-sm-6 p-4 rounded-start-4" style="color:white; background-color: #066533;">
+                        <div class="row ">
+                            <div class="col-sm-9 mt-4">
+                                <div class="card  align-items-center px-2 py-1" style="width: 5rem;">
+                                    <img src="{% static 'img/leaf1.png' %}" alt="leaf" style="width:3rem;">
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                            </div>
+                        </div>
+                        <b class="written">File Tracking System</b>
+                        <p>Secure digital platform for offficial file upload, movement.apporovals,department
+                            workflow,<br /> and
+                            real-time tracking.</p>
+                        <div class="col-sm-12 left">
+                            <i class="fa-solid my-1  fa-folder icon-style"></i> &nbsp;Secure File Management<br />
+                            <i class="fa-solid my-1 fa-route icon-style"></i>&nbsp;Track file movement<br />
+                            <i class="fa-solid my-1 fa-user-check icon-style"></i> &nbsp;User based Authentication
+                        </div>
+                    </div>
+                    <div class="col-sm-6 rounded-end-4 p-4 " style="background-color: #ffffff;">
+                        <div class="row">
+                            <div class="col-sm-4 green p-1 my-3 ms-3 border"><span style="color:#066533"><b>&nbsp;Green
+                                        gas
+                                        Limited</b></span></div>
+                            <div class="col-sm-7"></div>
+                        </div>
+                        {% if messages %}
+                        {% for m in messages %}
+                        <div class="alert alert-warning alert-dismissible fade show w-100" role="alert">
+                            {{m}}
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                        {% endfor %}
+                        {% endif %}
+                        <h2>User login</h2>
+                        <span class="right">Enter your credentials to access the dashboard</span>
+                        <form method="post">
+                            {% csrf_token %}
+                            <b>Username/Email</b>
+                            <div class="form-floating p-0 mb-2">
+                                <input type="text" class="form-control" id="name" placeholder="name@example.com"
+                                    name="username" required>
+                                <label for="name"><i class="fa-solid fa-user" style="color:#10B981;"></i>
+                                    &nbsp;
+                                    Username or email</label>
+                            </div>
+                            <b>Password</b>
+                            <div class="form-floating p-0 mb-2">
+                                <input type="password" class="form-control" name="password" id="pass"
+                                    placeholder="name@example.com">
+                                <label for="pass"><i class="fa-solid fa-lock" style="color:#10B981;"></i>&nbsp;Email
+                                    password</label>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-5"><input type="checkbox"> <span style="font-size: 12px;;">Remember
+                                        me</span>
+                                </div>
+                                <div class="col-sm-2"></div>
+                                <div class="col-sm-5 for"><span style="color:green"><b> Forgot Password?</b></span>
+                                </div>
+                                <div class="col-sm-12">
+                                    <button type="submit" class="btn btn-success w-100"><a href="#"
+                                            class="no-underline"><span style="color:white;  font-size:15px;"><i
+                                                    class="fa fa-sign-in"></i> User
+                                                login</span></a></button>
+                                </div>
+                            </div>
+                            <a href="{% url 'index' %}" class="no-underline">
+                                <span style="color:rgb(21, 41, 21);  font-size:13px;"><i
+                                        class="fa-solid fa-arrow-left"></i>Back to
+                                    portal</span>
+                            </a>
+                        </form>
+                        <span class="copyright  ms-5"> copyright &copy; Green gas Limited All Right Reserved</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="{% static 'js/bootstrap.js' %}"></script>
+</body>
+</html>

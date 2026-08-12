@@ -1,0 +1,50 @@
+{% extends 'empbase.html' %}
+{% load static %}
+{% block employee %}
+
+<div class="row" style="background-color: #38e47f;">
+    <div class="col-sm-10 mx-auto"><br>
+        <h1 class="text-center" style="color:#054e24; font-family:'Algerian', serif;">My profile</h1>
+        <div class="row pt-2">
+            <div class="col-sm-5">
+                <div class="card shadow p-3 rounded-5" style="background-color: #054e24; border:2px solid white;">
+                    <div class="text-center">
+                        {% if emp.picture %}
+                        <img src="{{emp.picture.url}}" alt="picture" class="img-fluid rounded-circle" height="80px">
+                        {% else %}
+                        <img src="{% static 'admin/assets/images/user/avatar-2.jpg' %}" alt="Picture" height="80px"
+                            class="rounded-circle">
+                        {% endif %}
+                    </div>
+                    <h5 class="text-center text-light ps-3">
+                        <p>Name- <b>{{emp.name}}</b></p>
+                        <p>Email- <b>{{emp.email}}</b></p>
+                    </h5>
+                </div>
+            </div>
+            <div class="col-sm-1"></div>
+            <div class="col-sm-6 text-white">
+                <div class="card  p-3 shadow rounded-5" style="background-color: #054e24; border:2px solid white;">
+                    <h3 class="text-center text-white" style="font-family:'Algerian', serif;">
+                        Profile Details
+                    </h3>
+                    <span style="color:aliceblue">
+                        <p>Name- {{emp.name}} </p>
+                        <p> Email- {{emp.email}}</p>
+                        <p>Contact No - <b>{{emp.contactno}}</b></p>
+                        <P>Designation -<b>{{emp.designation}}</b></P>
+                        <P>Department- <b>{{emp.department.dept_name}}</b></P>
+                        <P>Address -<b>{{emp.address}}</b></p>
+                    </span>
+                    <div class="text-center ">
+                        <a href="{% url 'updateprofile' %} " class="btn btn-light">
+                            <i class="fa-solid fa-pen-to-square"></i>
+                            Edit Profile </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

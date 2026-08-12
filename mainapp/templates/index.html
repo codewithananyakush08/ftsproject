@@ -1,0 +1,83 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <title>FTS</title>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+</head>
+<body>
+    <div class="container-fluid" style="height:100vh;">
+        <!-- outer start -->
+        <div class="row h-100 align-items-center">
+            <div class="col-sm-8 mx-auto border-top border-success border-3 rounded-4">
+                <!-- card satrt -->
+                <div class="row">
+                    <!-- left part start -->
+                    <div class="col-sm-6 p-4 rounded-start-4" style="color:white; background-color: #076735;">
+                        <div class="row ">
+                            <div class="col-sm-9 mt-4">
+                                <div class="card align-items-center px-2 py-1" style="width: 5rem;">
+                                    <img src="{% static 'img/leaf1.png' %}" alt="leaf" style="width:3rem;">
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                            </div>
+                        </div>
+                        <h4 class="mt-4">File Tracking System</h4>
+                        <p>Secure digital platform for offficial file upload, movement.apporovals,department
+                            workflow,<br /> and
+                            real-time tracking.</p>
+                        <h5><i class="fa-solid  me-2 fa-folder icon-style"></i>Secure File Management</h5>
+                        <h5><i class="fa-solid  me-2 fa-route icon-style"></i>Track file movement</h5>
+                    </div>
+                    <!-- leftpart end -->
+                    <!-- rightpart start -->
+                    <div class="col-sm-6 rounded-end-4 p-3 " style="background-color: #ffffff;">
+                        <div class="row">
+                            <div class="col-sm-4 green p-1 my-3 ms-1 border"><span style="color:#066533"><b>&nbsp;Green
+                                        gas
+                                        Limited</b></span></div>
+                            <div class="col-sm-4"></div>
+                        </div>
+                        <h4 class="fw-bold mb-0">Official Portal</h4>
+                        <span class="right"> Please select your login type to continue</span>
+                        <a href="{% url 'adminlogin' %}" class="no-underline">
+                            <div class="card mt-2">
+                                <div class="card-body">
+                                    <i class="fa-solid fa-user-shield people" style="color:#7499d8;"></i>
+                                    <h5 class="fw-bold" style="font-size: 19px;">Admin Login</h5>
+                                    <p class="card-text">Manage users ,departments and all file records.</p>
+                                </div>
+                            </div>
+                        </a>
+                        <a href="{% url 'userlogin' %}" class="no-underline">
+                            <div class="card my-4">
+                                <div class="card-body">
+                                    <i class="fa-solid fa-user people" style="color:#10B981;"></i>
+                                    <h5 class="fw-bold" style="font-size: 19px;">User Login</h5>
+                                    <p class="card-text">Upload,update,move and track your files.</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <!-- right part end -->
+                <!-- card end -->
+            </div>
+        </div>
+        <!-- outer end -->
+    </div>
+    <script src="{% static 'js/bootstrap.js' %}"></script>
+</body>
+
+</html>
